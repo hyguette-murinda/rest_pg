@@ -59,9 +59,58 @@ const EmployeeLaptopModel = sequelize.define('employee_laptop', {
     allowNull: true,
   }
 },{
-    timestamps:true,
-    tableName: "employee_laptop"
-  },
+  timestamps: false,
+  indexes: [
+    {
+      name: "firstname",
+      fields: ["firstname"],
+    },
+    {
+      name: "lastname",
+      fields: ["lastname"],
+    },
+    {
+      name: "nationalId",
+      fields: ["nationalId"],
+    },
+    {
+      name: "phoneNumber",
+      fields: ["phoneNumber"],
+    },
+    {
+      name: "email",
+      fields: ["email"],
+    },
+    {
+      name: "department",
+      fields: ["department"],
+    },
+    {
+      name: "position",
+      fields: ["position"],
+    },
+    {
+      name: "laptopManufacturer",
+      fields: ["laptopManufacturer"],
+    },
+    {
+      name: "model",
+      fields: ["Model"],
+    },
+    {
+      name: "serialNumber",
+      fields: ["SerialNumber"],
+    },
+
+  ],
+}
 );
+EmployeeLaptopModel.sync({ alter: true })
+  .then(() => {
+    console.log("Employee table created successfully");
+  })
+  .catch((error) => {
+    console.error("Error creating Data table:", error);
+  });
 
 export default EmployeeLaptopModel

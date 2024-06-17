@@ -22,9 +22,30 @@ const UserModel = sequelize.define('users', {
     allowNull: true,
   }
 },{
-    timestamps:true,
-  },
+  timestamps: false,
+  indexes: [
+    {
+      name: "email",
+      fields: ["email"],
+    },
+    {
+      name: "password",
+      fields: ["password"],
+    },
+    {
+      name: "names",
+      fields: ["names"],
+    }
+  ],
+},
 );
+UserModel.sync({ alter: true })
+  .then(() => {
+    console.log("Data table created successfully");
+  })
+  .catch((error) => {
+    console.error("Error creating Data table:", error);
+  });
 
 
 export default UserModel

@@ -51,7 +51,7 @@ export const getEmployeeLaptops = async (req, res) => {
     const options = {
       offset: (page - 1) * limit,
       limit: limit,
-      order: [['createdAt', 'DESC']],
+      order: [['firstname', 'DESC']],
     };
 
     const { count, rows: employees } = await EmployeeLaptopModel.findAndCountAll(options);
